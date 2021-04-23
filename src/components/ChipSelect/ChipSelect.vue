@@ -3,27 +3,30 @@
         <div class="selection">
             <chip v-for="(optionId) in selectedOptionIds"
                   :key="optionId"
-                  @close="deselectOption(optionId)"
                   closable
+                  @close="deselectOption(optionId)"
             >
                 {{options[optionId]}}
             </chip>
         </div>
         <div class="options">
             <toggle-chip
-                    v-for="(option, index) in options"
+                    v-for="(optionState, index) in optionStates"
                     :key="index"
-                    @change="toggleOption(index)"
+                    v-model="optionState.selected"
             >
-                {{option}}
+                {{options[index]}}
             </toggle-chip>
         </div>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
+
     import Chip from "@/components/ChipSelect/Chip";
     import ToggleChip from "@/components/ToggleChip";
+
     export default {
         name: "ChipSelect",
         components: {ToggleChip, Chip},
@@ -31,26 +34,53 @@
             options: {
                 type: Array,
                 default: () => []
-            }
+            },
+            value: {
+                type: Array,
+                default: () => []
+            },
         },
         data() {
             return {
-                selectedOptionIds: []
+                optionStates: this.options.map(() => ({
+                    selected: false
+                })),
+                selectedOptionIds: [],
+                selectedOptions: this.value
+            }
+        },
+        watch: {
+            optionStates: {
+                handler(value) {
+                    this.selectedOptionIds = value.reduce((array, optionState, index) => {
+                        if (optionState.selected) {
+                            array.push(index);
+                        }
+                        return array;
+                    }, []);
+
+                    this.selectedOptions = value.reduce((array, optionState, index) => {
+                        if (optionState.selected) {
+                            array.push(this.options[index]);
+                        }
+                        return array;
+                    }, []);
+
+                    this.$emit("input", this.selectedOptions);
+                },
+                deep: true,
+                immediate: true
             }
         },
         methods: {
             deselectOption(optionId) {
-                this.selectedOptionIds.splice(this.selectedOptionIds.indexOf(optionId), 1);
-            },
-            selectOption(optionId) {
-                this.selectedOptionIds.push(optionId);
+                Vue.set(this.optionStates[optionId], "selected", false);
             },
             toggleOption(optionId) {
-                if (this.selectedOptionIds.includes(optionId)) {
-                    this.deselectOption(optionId);
-                } else {
-                    this.selectOption(optionId);
-                }
+                // this.optionStates[optionId].selected = !this.optionStates[optionId].selected;
+                // Vue.set(this.optionStates[optionId], "selected", !this.optionStates[optionId].selected);
+                Vue.set(this.optionStates, optionId, {selected: !this.optionStates[optionId].selected});
+                // Vue.set(this.optionStates, optionId, !this.optionStates[optionId]);
             }
         }
     }

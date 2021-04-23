@@ -26,7 +26,6 @@ export default {
   },
   watch: {
     selectedCurrencies() {
-
     }
   }
 }

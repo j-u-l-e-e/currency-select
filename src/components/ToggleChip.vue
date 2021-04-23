@@ -8,7 +8,6 @@
                 type="checkbox"
                 class="chip-checkbox"
                 v-model="checked"
-                v-on="$listeners"
         />
         <slot></slot>
     </div>
@@ -28,6 +27,17 @@
         data() {
             return {
                 checked: this.value
+            }
+        },
+        watch: {
+            value: {
+                handler(value) {
+                    this.checked = value;
+                },
+                immediate: true
+            },
+            checked(value) {
+                this.$emit("input", value);
             }
         },
         methods: {
