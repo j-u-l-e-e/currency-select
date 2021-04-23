@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <chip-select
+            :options="currencies"
+            v-model="selectedCurrencies"
+    >
+    </chip-select>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapState} from "vuex";
+
+import ChipSelect from "@/components/ChipSelect/ChipSelect";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ChipSelect
+  },
+  data: () => ({
+    selectedCurrencies: []
+  }),
+  computed: {
+    ...mapState("currency", ["currencies"])
+  },
+  watch: {
+    selectedCurrencies() {
+
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  #app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
 </style>
