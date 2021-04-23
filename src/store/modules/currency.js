@@ -2,15 +2,15 @@ export default {
     namespaced: true,
     state: {
         currencies: [
-            "EUR",
-            "PLN",
-            "GEL",
-            "DKK",
-            "CZK",
-            "GBP",
-            "SEK",
-            "USD",
-            "RUB"
+            "eur",
+            "pln",
+            "gel",
+            "dkk",
+            "czk",
+            "gbp",
+            "sek",
+            "usd",
+            "rub"
         ],
         selectedCurrencies: []
     },

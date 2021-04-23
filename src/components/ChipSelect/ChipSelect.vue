@@ -10,9 +10,10 @@
             </chip>
         </div>
         <div class="options">
-            <toggle-chip v-for="(option, index) in options"
-                         :key="index"
-                         @change="toggleOption(index)"
+            <toggle-chip
+                    v-for="(option, index) in options"
+                    :key="index"
+                    @change="toggleOption(index)"
             >
                 {{option}}
             </toggle-chip>
@@ -45,7 +46,6 @@
                 this.selectedOptionIds.push(optionId);
             },
             toggleOption(optionId) {
-                console.log(optionId);
                 if (this.selectedOptionIds.includes(optionId)) {
                     this.deselectOption(optionId);
                 } else {
@@ -58,7 +58,7 @@
 
 <style scoped>
     .chip-select {
-        width: 345px;
+        width: 32rem;
         padding: 15px;
         border: 1px solid #adadad;
         border-radius: 5px;
@@ -67,6 +67,7 @@
 
     .chip-select > .selection, .chip-select > .options {
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
 
