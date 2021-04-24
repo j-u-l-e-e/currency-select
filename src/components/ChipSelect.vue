@@ -24,7 +24,7 @@
 <script>
     import Vue from 'vue'
 
-    import Chip from "@/components/ChipSelect/Chip";
+    import Chip from "@/components/Chip";
     import ToggleChip from "@/components/ToggleChip";
 
     export default {
@@ -42,11 +42,9 @@
         },
         data() {
             return {
-                optionStates: this.options.map(() => ({
-                    selected: false
-                })),
+                selectedOptions: [],
                 selectedOptionIds: [],
-                selectedOptions: this.value
+                optionStates: this.options.map((option) => ({selected: this.value.includes(option)}))
             }
         },
         watch: {
@@ -76,13 +74,7 @@
             deselectOption(optionId) {
                 Vue.set(this.optionStates[optionId], "selected", false);
             },
-            toggleOption(optionId) {
-                // this.optionStates[optionId].selected = !this.optionStates[optionId].selected;
-                // Vue.set(this.optionStates[optionId], "selected", !this.optionStates[optionId].selected);
-                Vue.set(this.optionStates, optionId, {selected: !this.optionStates[optionId].selected});
-                // Vue.set(this.optionStates, optionId, !this.optionStates[optionId]);
-            }
-        }
+        },
     }
 </script>
 
@@ -100,6 +92,4 @@
         justify-content: space-between;
         flex-wrap: wrap;
     }
-
-
 </style>

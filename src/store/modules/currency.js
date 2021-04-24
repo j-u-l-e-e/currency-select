@@ -12,13 +12,24 @@ export default {
             "usd",
             "rub"
         ],
-        selectedCurrencies: []
+        selectedCurrencies: [
+            "dkk",
+            "czk"
+        ]
     },
     mutations: {
-        SET_SELECTED_CURRENCIES(state, selectedCurrencies) {
+        SET_SELECTED_CURRENCIES(state, {selectedCurrencies}) {
             state.selectedCurrencies = selectedCurrencies;
         }
     },
     actions: {
+        selectCurrencies({commit}, selectedCurrencies) {
+            commit("SET_SELECTED_CURRENCIES", {selectedCurrencies});
+        }
+    },
+    getters: {
+        getSelectedCurrencies: (state) => {
+            return state.selectedCurrencies.slice(0)
+        }
     }
 }

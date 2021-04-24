@@ -7,7 +7,7 @@
         >
             <span>X</span>
         </div>
-        <slot></slot>
+        <div data-label><slot></slot></div>
     </div>
 </template>
 

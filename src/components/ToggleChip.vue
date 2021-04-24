@@ -9,7 +9,7 @@
                 class="chip-checkbox"
                 v-model="checked"
         />
-        <slot></slot>
+        <div data-label><slot></slot></div>
     </div>
 </template>
 
