@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <chip-select
-            :options="currencies"
+            :options="getCurrencies"
             v-model="selection"
     >
     </chip-select>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters, mapActions} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 
 import ChipSelect from "@/components/ChipSelect";
 
@@ -24,16 +24,15 @@ export default {
     }
   },
   computed: {
-    ...mapState("currency", ["currencies"]),
-    ...mapGetters("currency", ["getSelectedCurrencies"]),
+    ...mapGetters("currency", ["getCurrencies", "getSelectedCurrencies"]),
   },
   watch: {
     selection(value) {
-      this.selectCurrencies(value);
+      this.setSelectedCurrencies(value);
     }
   },
   methods: {
-    ...mapActions("currency", ["selectCurrencies"])
+    ...mapActions("currency", ["setSelectedCurrencies"])
   },
   created() {
     this.selection = this.getSelectedCurrencies;
