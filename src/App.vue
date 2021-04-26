@@ -3,6 +3,7 @@
     <chip-select
             :options="getCurrencies"
             v-model="selection"
+            data-testid='currency-select'
     >
     </chip-select>
   </div>
@@ -52,6 +53,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
+    margin: 0;
   }
 
   #app {

@@ -80,7 +80,8 @@
 
 <style scoped>
     .chip-select {
-        width: 32rem;
+        width: 100%;
+        max-width: 32rem;
         padding: 15px;
         border: 1px solid #adadad;
         border-radius: 5px;
@@ -91,5 +92,11 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+
+    @media (max-width: 576px) {
+        .chip-select {
+            padding: 5px;
+        }
     }
 </style>

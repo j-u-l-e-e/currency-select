@@ -46,6 +46,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 2px;
+        text-transform: uppercase;
     }
 
     .close-btn {
@@ -62,7 +63,7 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .close-btn:hover {

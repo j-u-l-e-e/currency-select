@@ -1,5 +1,11 @@
 .chip {
     width: 9.2rem;
     height: 2.2rem;
-    margin: 0.4rem 0.2rem;
+    margin: 0.6rem 0.4rem;
+}
+
+@media (max-width: 576px) {
+    .chip {
+        width: 8rem;
+    }
 }

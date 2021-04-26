@@ -14,10 +14,7 @@ export default {
             "usd",
             "rub"
         ],
-        selectedCurrencies: [
-            "dkk",
-            "czk"
-        ]
+        selectedCurrencies: []
     },
     mutations: {
         SET_CURRENCIES(state, {currencies}) {
