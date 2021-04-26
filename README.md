@@ -18,13 +18,13 @@ This is a Vue project which contains of:
     * ChipSelect.vue
 * a vuex store with one module:
     * currency.js
-* a module with custom Javascript error-classes stored under `mintos-task/helpers` folder:
+* a module with custom Javascript error-classes stored under `/helpers` folder:
     * errors.js
 * executable tests:
     * unit tests:
-        * Vue component tests located in `mintos-task/tests/unit/component`
-        * Vuex store tests located in `mintos-task/tests/unit/store`
-    * end-to-end tests located in `mintos-task/tests/e2e`
+        * Vue component tests located in `/tests/unit/component`
+        * Vuex store tests located in `/tests/unit/store`
+    * end-to-end tests located in `/tests/e2e`
 
 ## Project setup
 
@@ -42,7 +42,7 @@ To build project for production run:
 ```
 npm run build
 ```
-You will find built project under `mintos-task/dist` folder.
+You will find built project under `/dist` folder.
 
 To execute unit tests run:
 ```
