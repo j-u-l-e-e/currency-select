@@ -1,4 +1,4 @@
-import {NotAnArrayError, NotASubsetError} from "@/helpers/exceptions";
+import {NotAnArrayError, NotASubsetError} from "@/helpers/errors";
 
 export default {
     namespaced: true,

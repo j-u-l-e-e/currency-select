@@ -1,7 +1,7 @@
 import Vuex from "vuex";
 import { createLocalVue } from "@vue/test-utils";
 import {CURRENCIES, SELECTED_CURRENCIES, INVALID_SELECTED_CURRENCIES} from "./__mocks__/currencies";
-import {NotAnArrayError, NotASubsetError} from "@/helpers/exceptions";
+import {NotAnArrayError, NotASubsetError} from "@/helpers/errors";
 import {createStoreConfig} from "./__mocks__/store-config";
 
 describe('actions', () => {
