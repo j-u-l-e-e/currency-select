@@ -42,28 +42,30 @@
         },
         data() {
             return {
-                selectedOptions: [],
-                selectedOptionIds: [],
                 optionStates: this.options.map((option) => ({selected: this.value.includes(option)}))
+            }
+        },
+        computed: {
+            selectedOptionIds() {
+                return this.optionStates.reduce((array, optionState, index) => {
+                    if (optionState.selected) {
+                        array.push(index);
+                    }
+                    return array;
+                }, []);
+            },
+            selectedOptions() {
+                return this.optionStates.reduce((array, optionState, index) => {
+                    if (optionState.selected) {
+                        array.push(this.options[index]);
+                    }
+                    return array;
+                }, []);
             }
         },
         watch: {
             optionStates: {
-                handler(value) {
-                    this.selectedOptionIds = value.reduce((array, optionState, index) => {
-                        if (optionState.selected) {
-                            array.push(index);
-                        }
-                        return array;
-                    }, []);
-
-                    this.selectedOptions = value.reduce((array, optionState, index) => {
-                        if (optionState.selected) {
-                            array.push(this.options[index]);
-                        }
-                        return array;
-                    }, []);
-
+                handler() {
                     this.$emit("input", this.selectedOptions);
                 },
                 deep: true,

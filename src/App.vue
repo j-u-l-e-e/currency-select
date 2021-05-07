@@ -2,7 +2,8 @@
   <div id="app">
     <chip-select
             :options="getCurrencies"
-            v-model="selection"
+            :value="getSelectedCurrencies"
+            @input="setSelectedCurrencies($event)"
             data-testid='currency-select'
     >
     </chip-select>
@@ -19,24 +20,11 @@ export default {
   components: {
     ChipSelect
   },
-  data() {
-    return {
-      selection: []
-    }
-  },
   computed: {
     ...mapGetters("currency", ["getCurrencies", "getSelectedCurrencies"]),
   },
-  watch: {
-    selection(value) {
-      this.setSelectedCurrencies(value);
-    }
-  },
   methods: {
     ...mapActions("currency", ["setSelectedCurrencies"])
-  },
-  created() {
-    this.selection = this.getSelectedCurrencies;
   }
 }
 </script>
