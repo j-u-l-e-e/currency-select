@@ -5,6 +5,7 @@
                   :key="optionId"
                   closable
                   @close="deselectOption(optionId)"
+                  class="w-100"
             >
                 {{options[optionId]}}
             </chip>
@@ -14,6 +15,7 @@
                     v-for="(optionState, index) in optionStates"
                     :key="index"
                     v-model="optionState.selected"
+                    class="w-100"
             >
                 {{options[index]}}
             </toggle-chip>
@@ -81,6 +83,8 @@
 </script>
 
 <style scoped>
+    @import "~@/styles/util.css";
+
     .chip-select {
         width: 100%;
         max-width: 32rem;
@@ -91,9 +95,9 @@
     }
 
     .chip-select > .selection, .chip-select > .options {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 16px;
     }
 
     @media (max-width: 576px) {
